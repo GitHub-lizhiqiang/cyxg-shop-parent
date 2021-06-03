@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.role.mapper.UmsRoleMapper">
+<select id="getRoleByUserId" parameterType="java.lang.Long" resultType="java.lang.String">
+    SELECT DISTINCT r.keyword FROM ums_role r
+LEFT JOIN ums_roleadmin ra on r.id=ra.roleId
+WHERE ra.userId=#{userId}
+</select>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.permission.mapper.UmsPermissionMapper">
+
+    <select id="getPermissionByUserId" parameterType="java.lang.Long" resultType="java.lang.String">
+        SELECT DISTINCT p.value FROM
+ums_permission p
+LEFT JOIN ums_rolepermission rp ON p.id=rp.permissionId
+LEFT JOIN ums_roleadmin ra on rp.roleId=ra.roleId
+WHERE ra.userId=#{userId}
+    </select>
+</mapper>
